@@ -1,0 +1,119 @@
+### ============================================================
+###  ms-direcciones — Peticiones de prueba
+###  Puerto: 8082
+### ============================================================
+
+
+### 1. Crear país: Chile
+POST http://localhost:8082/pais
+Content-Type: application/json
+
+{
+  "nombre": "Chile"
+}
+
+### 2. Listar todos los países
+GET http://localhost:8082/pais
+
+### 3. Buscar país por ID
+GET http://localhost:8082/pais/1
+
+### 4. Eliminar país por ID
+DELETE http://localhost:8082/pais/1
+
+
+### ============================================================
+
+### 5. Crear región: Coquimbo (asociada al país Chile, id_pais=1)
+POST http://localhost:8082/region
+Content-Type: application/json
+
+{
+  "nombre": "Coquimbo",
+  "id_pais": 1
+}
+
+### 6. Listar todas las regiones
+GET http://localhost:8082/region
+
+### 7. Buscar región por ID
+GET http://localhost:8082/region/1
+
+### 8. Eliminar región por ID
+DELETE http://localhost:8082/region/1
+
+
+### ============================================================
+
+### 9. Crear ciudad: La Serena (asociada a la región Coquimbo, id_region=1)
+POST http://localhost:8082/ciudad
+Content-Type: application/json
+
+{
+  "nombreCiudad": "La Serena",
+  "id_region": 1
+}
+
+### 10. Listar todas las ciudades
+GET http://localhost:8082/ciudad
+
+### 11. Buscar ciudad por ID
+GET http://localhost:8082/ciudad/1
+
+### 12. Eliminar ciudad por ID
+DELETE http://localhost:8082/ciudad/1
+
+
+### ============================================================
+
+### 13. Crear comuna: Coquimbo (asociada a la ciudad La Serena, id_ciudad=1)
+POST http://localhost:8082/comuna
+Content-Type: application/json
+
+{
+  "nombre": "Coquimbo",
+  "id_ciudad": 1
+}
+
+### 14. Listar todas las comunas
+GET http://localhost:8082/comuna
+
+### 15. Buscar comuna por ID
+GET http://localhost:8082/comuna/1
+
+### 16. Eliminar comuna por ID
+DELETE http://localhost:8082/comuna/1
+
+
+### ============================================================
+
+### 17. Crear dirección (asociada a la comuna Coquimbo, id_comuna=1)
+POST http://localhost:8082/direccion
+Content-Type: application/json
+
+{
+  "calle": "El Sauce",
+  "numero": 1234,
+  "departamentoVilla": null,
+  "id_comuna": 1
+}
+
+### 18. Crear dirección con departamento/villa
+POST http://localhost:8082/direccion
+Content-Type: application/json
+
+{
+  "calle": "Los Alamos",
+  "numero": 567,
+  "departamentoVilla": "Depto 4B",
+  "id_comuna": 1
+}
+
+### 19. Listar todas las direcciones
+GET http://localhost:8082/direccion
+
+### 20. Buscar dirección por ID (verifica jerarquía devuelta por el DTO)
+GET http://localhost:8082/direccion/1
+
+### 21. Eliminar dirección por ID
+DELETE http://localhost:8082/direccion/1
